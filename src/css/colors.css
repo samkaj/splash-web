@@ -41,7 +41,7 @@ ul {
 
 li {
     display: grid;
-    grid-template-columns: 36px 7em;
+    grid-template-columns: 36px 7em 1em;
     gap: 1em;
     margin: 1em 0;
 }
@@ -55,9 +55,29 @@ input[type=text] {
     border-radius: 10px;
     border-width: 2px;
     border-style: solid;
-    padding: 0 0.5em;
-    width: calc(5 * 1.2em);
+    padding: 0 0.6em;
+    width: calc(5 * 1.15em);
     font-size: 1.5em;
+}
+
+input[type=text]:focus {
+    border-color: var(--b04);
+}
+
+.copy-suffix {
+    display: block;
+    vertical-align: text-top;
+    margin: auto;
+    color: var(--b04);
+    user-select: none;
+    transition: ease-in-out all 0.1s;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.copy-suffix:hover {
+    background-color: var(--b02);
+    cursor: pointer;
 }
 
 .color-display[data-input-id="b00"] {

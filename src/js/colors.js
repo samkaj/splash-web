@@ -17,7 +17,6 @@ const fallbackPalette = {
     b0f: "#D89CC2",
 };
 
-// TODO: eventually load from url params or local storage
 const loadSavedPalette = () => {
     const storedPalette = JSON.parse(localStorage.getItem("palette"));
     palette = storedPalette ? storedPalette : fallbackPalette;
@@ -33,7 +32,19 @@ export var palette = loadSavedPalette() || fallbackPalette;
 const loadColors = () => {
     const inputIds = Object.keys(palette);
     inputIds.forEach(attachColorInputListeners);
+    attachCopyListeners();
 };
+
+const attachCopyListeners = () => {
+    const listItems = [...document.getElementById("swatch").getElementsByTagName("li")];
+    for (const li of listItems) {
+        const input = li.getElementsByTagName("input")[0];
+        const span = li.getElementsByTagName("span")[0];
+        span.addEventListener("click", () => {
+            navigator.clipboard.writeText(input.value);
+        })
+    }
+}
 
 /**
  * Attach event listeners and listen for changes on the given inputId.
