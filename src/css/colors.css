@@ -31,6 +31,7 @@ div.color-display {
     height: 3em;
     border-width: 2px;
     border-color: var(--b02);
+    border-style: solid;
 }
 
 ul {
@@ -53,6 +54,7 @@ input[type=text] {
     color: var(--b05);
     border-radius: 10px;
     border-width: 2px;
+    border-style: solid;
     padding: 0 0.5em;
     width: calc(5 * 1.2em);
     font-size: 1.5em;

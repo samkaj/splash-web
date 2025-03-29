@@ -1,20 +1,20 @@
 const fallbackPalette = {
-    b00: "#181818",
-    b01: "#282828",
-    b02: "#383838",
-    b03: "#585858",
-    b04: "#b8b8b8",
-    b05: "#d8d8d8",
-    b06: "#e8e8e8",
-    b07: "#f8f8f8",
-    b08: "#ab4642",
-    b09: "#dc9656",
-    b0a: "#f7ca88",
-    b0b: "#a1b56c",
-    b0c: "#86c1b9",
-    b0d: "#7cafc2",
-    b0e: "#ba8baf",
-    b0f: "#a16946",
+    b00: "#191724",
+    b01: "#1F1D2E",
+    b02: "#26233A",
+    b03: "#21202E",
+    b04: "#403D52",
+    b05: "#E0DEF4",
+    b06: "#EAE9F9",
+    b07: "#FFFFFF",
+    b08: "#EB6F92",
+    b09: "#F6C177",
+    b0a: "#EBBCBA",
+    b0b: "#31748F",
+    b0c: "#9CCFD8",
+    b0d: "#C4A7E7",
+    b0e: "#AAD89C",
+    b0f: "#D89CC2",
 };
 
 // TODO: eventually load from url params or local storage
@@ -27,9 +27,9 @@ const loadSavedPalette = () => {
 // TODO: might involve into a class
 export var palette = loadSavedPalette() || fallbackPalette;
 
-// TODO: use setProperty (https://www.w3schools.com/css/css3_variables_javascript.asp) for updating borders and such
-//       e.g. define the colors in CSS and update them from there. In that way,
-//       we won't have to do weird magic like we have prior to this. nice!
+/**
+ * Attach color listeners to each color in the palette.
+ */
 const loadColors = () => {
     const inputIds = Object.keys(palette);
     inputIds.forEach(attachColorInputListeners);
