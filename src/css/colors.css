@@ -24,17 +24,19 @@
 main {
     display: grid;
     grid-template-areas: "left right";
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     gap: 2em;
     margin: auto;
-    width: min-content;
+}
+
+main,
+section {
     border-radius: 15px;
-    background-color: var(--b01);
     padding: 0.5em;
+    background-color: var(--b01);
     border-color: var(--b02);
     border-width: 2px;
     border-style: solid;
-    box-shadow: var(--b01) 0px 8px 24px;
 }
 
 body {
@@ -90,8 +92,8 @@ nav {
 }
 
 #wrapper {
-    width: fit-content;
     margin: auto;
+    width: 60%;
 }
 
 ul#navbar {
@@ -104,7 +106,7 @@ ul#navbar {
     justify-items: center;
 
     li {
-        display: inline;
+        display: block;
     }
 }
 
@@ -112,14 +114,28 @@ ul#navbar {
 aside {
     grid-area: left;
     border-right: solid 2px var(--b02);
-    width: 30rem;
-    margin: auto;
     height: 100%;
+}
+
+ul#swatch {
+    list-style-type: inside;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-height: calc(8 * 5em);
+    padding: 0;
+}
+
+ul#swatch>li {
+    display: grid;
+    grid-template-columns: 2.5em 5.1em 2em;
+    gap: 1em;
+    margin: 1em;
 }
 
 article {
     grid-area: right;
-    width: max-content;
     padding-right: 2em;
     height: calc(8 * 5.6rem);
 }
@@ -134,30 +150,12 @@ div.color-display {
     border-style: solid;
 }
 
-ul#swatch {
-    list-style-type: inside;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    max-height: calc(8 * 5em);
-    width: 100%;
-    padding: 0;
-}
-
-ul#swatch>li {
-    display: grid;
-    grid-template-columns: 2.5em 5.1em 2em;
-    gap: 1em;
-    margin: 1em;
-}
 
 ol {
     list-style-type: none;
     padding: 0;
     margin: 0;
     counter-reset: item;
-    width: 100%;
 }
 
 ol>li {
@@ -202,6 +200,13 @@ input[type=text]:focus {
     border-radius: 5px;
     padding: 1px;
     margin-left: 3px;
+}
+
+section#generator {
+    display: block;
+    padding: 0;
+    margin: auto;
+    margin-top: 1em;
 }
 
 .copy-suffix:hover {
