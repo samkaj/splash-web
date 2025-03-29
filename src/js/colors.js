@@ -35,11 +35,18 @@ const loadColors = () => {
     attachCopyListeners();
 };
 
+/**
+ * Attach copy button listeners to each item in the ul with the swatch id.
+ */
 const attachCopyListeners = () => {
     const listItems = [...document.getElementById("swatch").getElementsByTagName("li")];
     for (const li of listItems) {
         const input = li.getElementsByTagName("input")[0];
         const span = li.getElementsByTagName("span")[0];
+        if (!input || !span) {
+            return;
+        }
+
         span.addEventListener("click", () => {
             navigator.clipboard.writeText(input.value);
         })
