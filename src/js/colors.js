@@ -19,7 +19,9 @@ const fallbackPalette = {
 
 // TODO: eventually load from url params or local storage
 const loadSavedPalette = () => {
-    return undefined;
+    const storedPalette = JSON.parse(localStorage.getItem("palette"));
+    palette = storedPalette ? storedPalette : fallbackPalette;
+    return palette;
 };
 
 // TODO: might involve into a class
@@ -64,9 +66,14 @@ const attachColorInputListeners = (inputId) => {
 
     inputElement.addEventListener("input", (e) => {
         const color = e.currentTarget.value;
-        if (isValidHexColor(color)) {
-            root.style.setProperty(`--${inputId}`, color);
+        const isHex = isValidHexColor(color);
+        if (!isHex) {
+            return;
         }
+
+        root.style.setProperty(`--${inputId}`, color);
+        palette[inputId] = color;
+        localStorage.setItem("palette", JSON.stringify(palette));
     })
 };
 
