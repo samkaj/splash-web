@@ -30,7 +30,6 @@ export var palette = loadSavedPalette() || fallbackPalette;
 //       we won't have to do weird magic like we have prior to this. nice!
 const loadColors = () => {
     const inputIds = Object.keys(palette);
-    setDefaults();
     inputIds.forEach(attachColorInputListeners);
 };
 
@@ -52,62 +51,28 @@ const attachColorInputListeners = (inputId) => {
         return;
     }
 
-    if (inputElement.value.length == 0) {
+    let color = inputElement.value;
+    if (color.length == 0) {
         inputElement.value = palette[inputId];
+        color = palette[inputId];
     }
 
-    const displayElements = [
-        ...document.querySelectorAll(
-            `.color-display[data-input-id="${inputId}"]`,
-        ),
-    ];
+    const root = document.querySelector(":root");
+    if (isValidHexColor(color)) {
+        root.style.setProperty(`--${inputId}`, color);
+    }
 
-    // Update colors on load
-    displayElements.forEach((element) => {
-        const tagName = element.tagName;
-        if (isValidHexColor(inputElement.value)) {
-            element.style[getRelevantAttribute(tagName)] = inputElement.value;
+    inputElement.addEventListener("input", (e) => {
+        const color = e.currentTarget.value;
+        if (isValidHexColor(color)) {
+            root.style.setProperty(`--${inputId}`, color);
         }
-    });
-
-    // Update colors on input changes
-    displayElements.forEach((element) =>
-        inputElement.addEventListener("input", () => {
-            const tagName = element.tagName;
-            if (isValidHexColor(inputElement.value)) {
-                element.style[getRelevantAttribute(tagName)] =
-                    inputElement.value;
-            } else if (Object.entries(palette).includes(inputId)) {
-                element.style[getRelevantAttribute(tagName)] = palette[inputId];
-            }
-        }),
-    );
+    })
 };
 
 const isValidHexColor = (hex) => {
     const isHex = /^#([0-9A-Fa-f]{3}){1,2}$/;
     return isHex.test(hex);
-};
-
-const setDefaults = () => {
-    for (const [name, color] of Object.entries(palette)) {
-        [
-            ...document.querySelectorAll(
-                `.color-display[data-input-id="${name}"]`,
-            ),
-        ].forEach((elem) => {
-            const tagName = elem.tagName;
-            elem.style[getRelevantAttribute(tagName)] = color;
-        });
-    }
-};
-
-const getRelevantAttribute = (tagName = "") => {
-    if (["H1"].includes(tagName)) {
-        return "color";
-    }
-
-    return "background-color";
 };
 
 export default loadColors;

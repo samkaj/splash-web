@@ -24,21 +24,100 @@ body {
     background-color: var(--b00);
 }
 
-div {
+div.color-display {
     display: block;
     border-radius: 100%;
-    width: 36px;
-    height: 36px;
+    width: 3em;
+    height: 3em;
+    border-width: 2px;
+    border-color: var(--b02);
+}
+
+ul {
+    list-style-type: inside;
+    padding: 0;
 }
 
 li {
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 36px 7em;
+    gap: 1em;
+    margin: 1em 0;
 }
 
-input {
+input[type=text] {
     display: block;
     all: unset;
     border-color: var(--b02);
     background-color: var(--b01);
     color: var(--b05);
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 0 0.5em;
+    width: calc(5 * 1.2em);
+    font-size: 1.5em;
+}
+
+.color-display[data-input-id="b00"] {
+    background-color: var(--b00);
+}
+
+.color-display[data-input-id="b01"] {
+    background-color: var(--b01);
+}
+
+.color-display[data-input-id="b02"] {
+    background-color: var(--b02);
+}
+
+.color-display[data-input-id="b03"] {
+    background-color: var(--b03);
+}
+
+.color-display[data-input-id="b04"] {
+    background-color: var(--b04);
+}
+
+.color-display[data-input-id="b05"] {
+    background-color: var(--b05);
+}
+
+.color-display[data-input-id="b06"] {
+    background-color: var(--b06);
+}
+
+.color-display[data-input-id="b07"] {
+    background-color: var(--b07);
+}
+
+.color-display[data-input-id="b08"] {
+    background-color: var(--b08);
+}
+
+.color-display[data-input-id="b09"] {
+    background-color: var(--b09);
+}
+
+.color-display[data-input-id="b0a"] {
+    background-color: var(--b0a);
+}
+
+.color-display[data-input-id="b0b"] {
+    background-color: var(--b0b);
+}
+
+.color-display[data-input-id="b0c"] {
+    background-color: var(--b0c);
+}
+
+.color-display[data-input-id="b0d"] {
+    background-color: var(--b0d);
+}
+
+.color-display[data-input-id="b0e"] {
+    background-color: var(--b0e);
+}
+
+.color-display[data-input-id="b0f"] {
+    background-color: var(--b0f);
 }
