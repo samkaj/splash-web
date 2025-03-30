@@ -51,6 +51,12 @@ const attachCopyListeners = () => {
             navigator.clipboard.writeText(input.value);
         })
     }
+
+    const copyOutputButton = document.getElementById("copy-output");
+    const outputContent = document.getElementById("output");
+    copyOutputButton.addEventListener("click", () => {
+        navigator.clipboard.writeText(outputContent.innerText);
+    })
 }
 
 /**

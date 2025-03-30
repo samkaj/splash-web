@@ -19,6 +19,8 @@
     font-family: monospace;
     margin: 0;
     padding: 0;
+
+    scrollbar-color: var(--b02) transparent;
 }
 
 main {
@@ -48,7 +50,6 @@ body {
 
 h1 {
     color: var(--b05);
-    text-align: center;
 }
 
 nav {
@@ -92,9 +93,13 @@ nav {
 }
 
 #wrapper {
-    margin: auto;
     width: 60%;
     min-width: 1000px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 ul#navbar {
@@ -115,6 +120,10 @@ ul#navbar {
 aside {
     grid-area: left;
     border-right: solid 2px var(--b02);
+    h1 {
+        margin-left: 1em;
+        margin-bottom: 0.5em;
+    }
 }
 
 ul#swatch {
@@ -202,6 +211,15 @@ input[type=text]:focus {
     margin-left: 3px;
 }
 
+#copy-output {
+    user-select: none;
+    color: var(--b04);
+    border-radius: 5px;
+    padding: 1px;
+    vertical-align: text-top;
+    margin-left: 3px;
+}
+
 section#generator {
     display: flex;
     padding: 1.5em;
@@ -220,7 +238,7 @@ section#generator {
     padding: 0.7em;
     color: var(--b06);
     background-color: var(--b02);
-    border-radius: 10px;
+    border-radius: 15px;
     border: 2px solid var(--b04);
 }
 
@@ -245,7 +263,7 @@ section#generator {
     display: block;
     width: 100%;
     code {
-        font-size: 1.2em;    
+        font-size: 1.2em;
     }
 }
 
@@ -254,7 +272,6 @@ section#generator {
     overflow-y: scroll;
     height: 10em;
     border: solid 2px var(--b02);
-    border-radius: 15px;
     padding: 1em;
 }
 
@@ -282,7 +299,7 @@ input[type=radio]:checked {
     border-color: var(--b05);
 }
 
-.copy-suffix:hover {
+.copy-suffix:hover, #copy-output:hover {
     background-color: var(--b02);
     cursor: pointer;
 }
