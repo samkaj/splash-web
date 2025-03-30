@@ -94,6 +94,7 @@ nav {
 #wrapper {
     margin: auto;
     width: 60%;
+    min-width: 1000px;
 }
 
 ul#navbar {
@@ -114,7 +115,6 @@ ul#navbar {
 aside {
     grid-area: left;
     border-right: solid 2px var(--b02);
-    height: 100%;
 }
 
 ul#swatch {
@@ -137,7 +137,7 @@ ul#swatch>li {
 article {
     grid-area: right;
     padding-right: 2em;
-    height: calc(8 * 5.6rem);
+    height: calc(8 * 5.4rem);
 }
 
 div.color-display {
@@ -203,10 +203,83 @@ input[type=text]:focus {
 }
 
 section#generator {
-    display: block;
-    padding: 0;
+    display: flex;
+    padding: 1.5em;
     margin: auto;
     margin-top: 1em;
+    gap: 2em;
+
+    h1 {
+        text-align: left;
+        margin-top: 0;
+    }
+}
+
+#generate {
+    all: unset;
+    padding: 0.7em;
+    color: var(--b06);
+    background-color: var(--b02);
+    border-radius: 10px;
+    border: 2px solid var(--b04);
+}
+
+#format {
+    border-right: solid 2px var(--b02);
+    width: max-content;
+    padding-right: 2em;
+}
+
+.radio {
+    font-size: 1em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    padding-bottom: 1em;
+    width: max-content;
+    height: 11em;
+    overflow-y: scroll;
+}
+
+.content {
+    display: block;
+    width: 100%;
+    code {
+        font-size: 1.2em;    
+    }
+}
+
+#output {
+    display: block;
+    overflow-y: scroll;
+    max-height: 10em;
+    border: solid 2px var(--b02);
+    border-radius: 15px;
+    padding: 1em;
+}
+
+
+input[type=radio] {
+    all: unset;
+    float: left;
+    border-radius: 100%;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: var(--b02);
+    border: 1px solid var(--b04);
+}
+
+label {
+    margin-left: 10px;
+}
+
+input[type=radio]:checked {
+    background-color: var(--b05);
+}
+
+#generate:hover {
+    cursor: pointer;
+    border-color: var(--b05);
 }
 
 .copy-suffix:hover {

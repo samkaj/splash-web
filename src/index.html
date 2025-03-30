@@ -101,7 +101,7 @@
                 </ul>
             </aside>
             <article>
-                <h1>Example</h1>
+                <h1>Preview</h1>
                 <code>
                     <ol>
                         <li> <span class="base16-keyword">package</span> <span class="base16-namespace">io</span></li>
@@ -151,6 +151,40 @@
                 </code>
             </article>
         </main>
+        <section id="generator">
+            <form id="format">
+                <h1>Format</h1>
+                <div class="radio">
+                    <div>
+                        <input type="radio" id="nvim" name="generator" value="nvim" />
+                        <label for="nvim">nvim</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="alacritty" name="generator" value="alacritty" />
+                        <label for="alacritty">alacritty</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="helix" name="generator" value="helix" />
+                        <label for="helix">helix</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="wezterm" name="generator" value="wezterm" />
+                        <label for="wezterm">wezterm</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="kitty" name="generator" value="kitty" />
+                        <label for="kitty">kitty</label>
+                    </div>
+                </div>
+                <input type="submit" value="Generate" id="generate">
+            </form>
+            <div class="content">
+                <h1>Output</h1>
+                <code id="output">
+                </code>
+            </div>
+        </section>
     </div>
 </body>
 
