@@ -252,7 +252,7 @@ section#generator {
 #output {
     display: block;
     overflow-y: scroll;
-    max-height: 10em;
+    height: 10em;
     border: solid 2px var(--b02);
     border-radius: 15px;
     padding: 1em;
