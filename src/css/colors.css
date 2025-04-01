@@ -116,7 +116,6 @@ ul#navbar {
     }
 }
 
-
 aside {
     grid-area: left;
     border-right: solid 2px var(--b02);
@@ -136,7 +135,7 @@ ul#swatch {
     padding: 0;
 }
 
-ul#swatch>li {
+ul#swatch > li {
     display: grid;
     grid-template-columns: 2.5em 5.1em 2em;
     gap: 1em;
@@ -159,7 +158,6 @@ div.color-display {
     border-style: solid;
 }
 
-
 ol {
     list-style-type: none;
     padding: 0;
@@ -167,13 +165,13 @@ ol {
     counter-reset: item;
 }
 
-ol>li {
+ol > li {
     font-size: 1.2em;
     margin: 0;
     padding: 1pt 0;
 }
 
-ol>li::before {
+ol > li::before {
     display: inline-block;
     content: counter(item);
     counter-increment: item;
@@ -181,7 +179,7 @@ ol>li::before {
     padding-right: 1em;
 }
 
-input[type=text] {
+input[type="text"] {
     display: block;
     all: unset;
     border-color: var(--b02);
@@ -195,7 +193,7 @@ input[type=text] {
     font-size: 1.2em;
 }
 
-input[type=text]:focus {
+input[type="text"]:focus {
     border-color: var(--b04);
 }
 
@@ -275,8 +273,7 @@ section#generator {
     padding: 1em;
 }
 
-
-input[type=radio] {
+input[type="radio"] {
     all: unset;
     float: left;
     border-radius: 100%;
@@ -290,7 +287,7 @@ label {
     margin-left: 10px;
 }
 
-input[type=radio]:checked {
+input[type="radio"]:checked {
     background-color: var(--b05);
 }
 
@@ -299,7 +296,8 @@ input[type=radio]:checked {
     border-color: var(--b05);
 }
 
-.copy-suffix:hover, #copy-output:hover {
+.copy-suffix:hover,
+#copy-output:hover {
     background-color: var(--b02);
     cursor: pointer;
 }

@@ -39,7 +39,9 @@ const loadColors = () => {
  * Attach copy button listeners to each item in the ul with the swatch id.
  */
 const attachCopyListeners = () => {
-    const listItems = [...document.getElementById("swatch").getElementsByTagName("li")];
+    const listItems = [
+        ...document.getElementById("swatch").getElementsByTagName("li"),
+    ];
     for (const li of listItems) {
         const input = li.getElementsByTagName("input")[0];
         const span = li.getElementsByTagName("span")[0];
@@ -49,15 +51,15 @@ const attachCopyListeners = () => {
 
         span.addEventListener("click", () => {
             navigator.clipboard.writeText(input.value);
-        })
+        });
     }
 
     const copyOutputButton = document.getElementById("copy-output");
     const outputContent = document.getElementById("output");
     copyOutputButton.addEventListener("click", () => {
         navigator.clipboard.writeText(outputContent.innerText);
-    })
-}
+    });
+};
 
 /**
  * Attach event listeners and listen for changes on the given inputId.
@@ -98,7 +100,7 @@ const attachColorInputListeners = (inputId) => {
         root.style.setProperty(`--${inputId}`, color);
         palette[inputId] = color;
         localStorage.setItem("palette", JSON.stringify(palette));
-    })
+    });
 };
 
 const isValidHexColor = (hex) => {
