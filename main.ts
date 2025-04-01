@@ -1,14 +1,28 @@
-import express from "express";
-const port: number = 8080;
-const app = express();
-app.use(express.static(import.meta.dirname + "/src"));
+import { Application } from "jsr:@oak/oak/application";
+import { Router } from "jsr:@oak/oak/router";
 
-const main = () => {
-  app.listen(port, () => {
-    console.log("Server started on port", port);
-  });
-};
+const app = new Application();
 
-if (import.meta.main) {
-  main();
-}
+const generator = new Router();
+generator.post("/generate", async (context, next) => {
+  if (context.request.method != "POST") {
+    await next();
+  }
+
+  const requestedFormat = await context.request.body.formData();
+  if (!requestedFormat.get("generator")) {
+    context.throw(400, "missing field: generator");
+  }
+
+  context.response.body = "nvim";
+});
+
+app.use(generator.routes());
+app.use(async (context, next) => {
+  await context.send({
+    root: `${Deno.cwd()}/src`,
+    index: "index.html",
+  }).catch(async () => await next());
+});
+
+await app.listen({ port: 8080 });
