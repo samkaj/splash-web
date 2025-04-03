@@ -1,3 +1,4 @@
+import { palette } from "./colors.js";
 const form = document.querySelector("form");
 const output = document.querySelector("#output");
 
@@ -5,11 +6,19 @@ const loadGenerator = () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const data = new FormData(form);
+        const requestBody = {
+            generator: data.get("generator"),
+            palette: palette,
+        };
+
+        if (!requestBody.generator) {
+            return;
+        }
 
         try {
             const response = await fetch("/generate", {
                 method: "POST",
-                body: data,
+                body: JSON.stringify(requestBody),
             });
 
             if (!response.ok) {

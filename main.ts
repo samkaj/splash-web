@@ -7,15 +7,23 @@ const app = new Application();
 
 const generator = new Router();
 generator.post("/generate", async (context, next) => {
+    console.log(await context.request.body.json());
     if (context.request.method != "POST") {
         await next();
     }
 
-    const requestedFormat = await context.request.body.formData();
-    if (!requestedFormat.get("generator")) {
+    const requestedFormat = await context.request.body
+        .json()
+        .then((body) => body)
+        .catch((err) => {
+            context.throw(400, "malformed request: " + err);
+        });
+
+    if (!requestedFormat.generator) {
         context.throw(400, "missing field: generator");
     }
 
+    // XXX: will eventually fetch from the backend
     context.response.body = "nvim";
 });
 
