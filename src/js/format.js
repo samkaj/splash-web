@@ -15,22 +15,22 @@ const loadGenerator = () => {
             return;
         }
 
-        try {
-            const response = await fetch("/generate", {
-                method: "POST",
-                body: JSON.stringify(requestBody),
-            });
-
+        await fetch("/generate", {
+            method: "POST",
+            body: JSON.stringify(requestBody),
+        }).then(async (response) => {
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                console.error(`HTTP error with status: ${response.status}`);
+                output.textContent = "Error occurred.";
+                return;
             }
 
             const result = await response.text();
             output.textContent = result;
-        } catch (error) {
+        }).catch((error) => {
             console.error("Fetch error:", error);
             output.textContent = "Error occurred.";
-        }
+        });
     });
 };
 

@@ -103,6 +103,7 @@ const attachColorInputListeners = (inputId) => {
     });
 };
 
+/** @returns {boolean} */
 const isValidHexColor = (hex) => {
     const isHex = /^#([0-9A-Fa-f]{3}){1,2}$/;
     return isHex.test(hex);
