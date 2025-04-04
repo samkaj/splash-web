@@ -18,19 +18,21 @@ const loadGenerator = () => {
         await fetch("/generate", {
             method: "POST",
             body: JSON.stringify(requestBody),
-        }).then(async (response) => {
-            if (!response.ok) {
-                console.error(`HTTP error with status: ${response.status}`);
-                output.textContent = "Error occurred.";
-                return;
-            }
+        })
+            .then(async (response) => {
+                if (!response.ok) {
+                    console.error(`HTTP error with status: ${response.status}`);
+                    output.textContent = "Error occurred.";
+                    return;
+                }
 
-            const result = await response.text();
-            output.textContent = result;
-        }).catch((error) => {
-            console.error("Fetch error:", error);
-            output.textContent = "Error occurred.";
-        });
+                const result = await response.text();
+                output.textContent = result;
+            })
+            .catch((error) => {
+                console.error("Fetch error:", error);
+                output.textContent = "Error occurred.";
+            });
     });
 };
 
